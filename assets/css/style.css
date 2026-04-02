@@ -11,35 +11,36 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    height: 100vh; /* Fixed height for no-scroll */
     display: flex;
     justify-content: center;
     align-items: center;
     background: #6a11cb;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden; /* Prevent body scroll */
 }
 
 /* Background elements similar to the FOCUS style */
 body::before, body::after {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 30vh;
+    height: 30vh;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     z-index: -1;
 }
 
-body::before { top: -100px; left: -100px; }
-body::after { bottom: -100px; right: -100px; }
+body::before { top: -5vh; left: -5vh; }
+body::after { bottom: -5vh; right: -5vh; }
 
 .split-card {
     background: #ffffff;
     width: 100%;
-    max-width: 1000px;
-    min-height: 550px;
+    max-width: 950px;
+    height: 85vh; /* Responsive height to fit viewport */
+    min-height: 500px;
     display: flex;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -49,20 +50,23 @@ body::after { bottom: -100px; right: -100px; }
 
 /* Left Column: Visuals */
 .visual-side {
-    flex: 1;
+    flex: 1.2; /* Give slightly more space to the visual side */
     background-color: #f7faff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px; /* Reduced padding for more image space */
     position: relative;
+    overflow: hidden;
 }
 
 .visual-side .hero-img {
-    max-width: 85%;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the whole image fits without cropping */
+    max-width: 90%;
+    max-height: 90%;
 }
 
 .visual-side::after {
@@ -80,7 +84,7 @@ body::after { bottom: -100px; right: -100px; }
 /* Right Column: Form */
 .form-side {
     flex: 1;
-    padding: 60px 50px;
+    padding: 30px 40px; /* Reduced vertical padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,15 +93,16 @@ body::after { bottom: -100px; right: -100px; }
 .branding {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced margin */
 }
 
 .branding img {
-    height: 40px;
-    margin-right: 15px;
+    height: 35px; /* Slightly smaller */
+    margin-right: 12px;
 }
 
 .branding span {
+    font-size: 13px; /* Slightly smaller */
     font-weight: 600;
     color: var(--text-main);
     letter-spacing: 1px;
@@ -105,20 +110,20 @@ body::after { bottom: -100px; right: -100px; }
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 24px; /* Reduced from 28px */
     color: var(--text-main);
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Reduced margin */
     font-weight: 700;
 }
 
 p.instruction {
     color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 30px;
+    font-size: 13px; /* Reduced font size */
+    margin-bottom: 20px; /* Reduced margin */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 12px; /* Reduced from 20px */
 }
 
 .form-group label {
