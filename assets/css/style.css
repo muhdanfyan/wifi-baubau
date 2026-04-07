@@ -84,16 +84,17 @@ body::after { bottom: -5vh; right: -5vh; }
 /* Right Column: Form */
 .form-side {
     flex: 1;
-    padding: 30px 40px; /* Reduced vertical padding */
+    padding: 40px 50px; /* Increased padding and standardized */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Align from top for better control */
 }
 
 .branding {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Reduced margin */
+    margin-bottom: 30px; /* Increased from 20px */
+    padding-top: 10px; /* Buffer from card edge */
 }
 
 .branding img {
@@ -123,7 +124,7 @@ p.instruction {
 }
 
 .form-group {
-    margin-bottom: 12px; /* Reduced from 20px */
+    margin-bottom: 20px; /* Consistent margin */
 }
 
 .form-group label {
@@ -131,7 +132,7 @@ p.instruction {
     font-size: 13px;
     font-weight: 600;
     color: var(--text-main);
-    margin-bottom: 8px;
+    margin-bottom: 10px; /* Increased from 8px for better separation */
 }
 
 .form-control {
@@ -162,14 +163,14 @@ textarea.form-control {
     background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
     color: #fff;
     border: none;
-    padding: 15px;
+    padding: 16px;
     border-radius: 50px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(112, 66, 253, 0.3);
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 20px; /* Increased margin above primary button */
     width: 100%;
 }
 
@@ -200,8 +201,8 @@ textarea.form-control {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    gap: 10px;
-    margin-top: 5px;
+    gap: 15px; /* Increased gap from 10px */
+    margin-top: 10px;
 }
 
 .rating-group input {
@@ -209,11 +210,12 @@ textarea.form-control {
 }
 
 .rating-group label {
-    font-size: 24px;
+    font-size: 32px; /* Increased from 24px */
     color: #dfe6e9;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
     margin-bottom: 0px !important;
+    line-height: 1;
 }
 
 .rating-group label:hover,
@@ -228,8 +230,8 @@ textarea.form-control {
 
 /* Survey Link in index.html */
 .survey-promo {
-    margin-top: 15px;
-    padding-top: 15px;
+    margin-top: 25px; /* Increased margin */
+    padding-top: 20px;
     border-top: 1px dashed #eee;
     text-align: center;
 }
@@ -282,14 +284,15 @@ textarea.form-control {
 .status-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: #e1f5fe;
     color: #0288d1;
-    padding: 5px 12px;
+    padding: 8px 16px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    line-height: normal; /* Fix vertical centering */
 }
 
 .status-indicator::before {
