@@ -28,7 +28,7 @@
             <h2>Pendaftaran Hotspot</h2>
             <p class="instruction">Silakan lengkapi data Anda untuk memulai akses internet gratis.</p>
             
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="login-form">
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
                     <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
@@ -39,20 +39,30 @@
                     <input type="tel" id="wa" name="wa" class="form-control" placeholder="Contoh: 08123456789" required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="saran">Saran / Pertanyaan</label>
-                    <textarea id="saran" name="saran" class="form-control" placeholder="Saran Anda untuk kemajuan Kota Baubau"></textarea>
-                </div>
-                
                 <button type="submit" class="btn-send">Hubungkan & Kirim</button>
             </form>
             
+            <div class="survey-promo">
+                <p>Mau membantu? <a href="survey.html">Isi Survey Pelanggan &rarr;</a></p>
+            </div>
+
             <div class="back-link">
                 <p><a href="#">Informasi Layanan</a> &bull; <a href="#">Pusat Bantuan</a></p>
                 <p style="font-size: 11px; margin-top: 15px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            localStorage.setItem('wifi_user_name', nama);
+            window.location.href = 'status.html';
+        });
+    </script>
+</body>
+</html>
 
 </body>
 </html>

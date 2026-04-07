@@ -194,13 +194,148 @@ textarea.form-control {
     color: var(--primary-purple);
 }
 
+
+/* Satisfaction Rating */
+.rating-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.rating-group input {
+    display: none;
+}
+
+.rating-group label {
+    font-size: 24px;
+    color: #dfe6e9;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-bottom: 0px !important;
+}
+
+.rating-group label:hover,
+.rating-group label:hover ~ label,
+.rating-group input:checked ~ label {
+    color: #ffb900;
+}
+
+.rating-group label::before {
+    content: '★';
+}
+
+/* Survey Link in index.html */
+.survey-promo {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+    text-align: center;
+}
+
+.survey-promo a {
+    display: inline-block;
+    color: var(--primary-purple);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.survey-promo a:hover {
+    transform: scale(1.05);
+}
+
+
+/* Status Page */
+.status-info {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+.status-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.status-value {
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.status-indicator::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #0288d1;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 136, 209, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(2, 136, 209, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 136, 209, 0); }
+}
+
+.btn-logout {
+    background: #ecf0f1;
+    color: #2d3436;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-logout:hover {
+    background: #dfe6e9;
+    color: #d63031;
+}
+
 @media (max-width: 900px) {
     .split-card {
         flex-direction: column;
         max-width: 450px;
+        height: auto;
     }
     .visual-side {
         padding: 30px;
+        height: 200px;
+        flex: none;
     }
     .form-side {
         padding: 40px 30px;
