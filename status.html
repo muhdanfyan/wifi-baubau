@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Status Login - Wifi Baubau</title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
 </head>
 <body>
 
@@ -27,25 +30,25 @@
             
             <div class="status-indicator">Tersambung ke Internet</div>
             
-            <h2 id="welcome-msg">Halo, Pengguna!</h2>
+            <h2 id="welcome-msg">$(if login-by == 'trial')Halo, User Trial!$(else)Halo, $(username)!$(endif)</h2>
             <p class="instruction">Anda telah berhasil terhubung dengan layanan hotspot gratis Pemerintah Kota Baubau.</p>
             
             <div class="status-info">
                 <div class="status-item">
                     <span class="status-label">Alamat IP</span>
-                    <span class="status-value">192.168.10.25</span>
+                    <span class="status-value">$(ip)</span>
                 </div>
                 <div class="status-item">
                     <span class="status-label">MAC Address</span>
-                    <span class="status-value">BC:84:DE:A5:11:02</span>
+                    <span class="status-value">$(mac)</span>
                 </div>
                 <div class="status-item">
                     <span class="status-label">Waktu Sesi</span>
-                    <span class="status-value" id="session-time">00:00:05</span>
+                    <span class="status-value" id="session-time">$(uptime)</span>
                 </div>
                 <div class="status-item">
                     <span class="status-label">Data Terpakai</span>
-                    <span class="status-value">12.5 MB</span>
+                    <span class="status-value">$(bytes-in-nice) / $(bytes-out-nice)</span>
                 </div>
             </div>
 
@@ -53,31 +56,16 @@
             <button type="button" class="btn-logout" onclick="logout()">Putuskan Koneksi</button>
             
             <div class="back-link">
-                <p><a href="#">Syarat & Ketentuan</a> &bull; <a href="#">Pusat Bantuan</a></p>
+                <p><a href="terms.html">Syarat & Ketentuan</a> &bull; <a href="help.html">Pusat Bantuan</a></p>
                 <p style="font-size: 11px; margin-top: 15px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Set welcome message
-        const userName = localStorage.getItem('wifi_user_name') || 'Pengguna';
-        document.getElementById('welcome-msg').innerText = `Halo, ${userName}!`;
-
-        // Dummy session timer
-        let seconds = 5;
-        setInterval(() => {
-            seconds++;
-            const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
-            const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-            const s = (seconds % 60).toString().padStart(2, '0');
-            document.getElementById('session-time').innerText = `${h}:${m}:${s}`;
-        }, 1000);
-
         function logout() {
             if(confirm('Apakah Anda yakin ingin memutuskan koneksi?')) {
-                localStorage.removeItem('wifi_user_name');
-                window.location.href = 'index.html';
+                window.location.href = '$(link-logout)';
             }
         }
     </script>

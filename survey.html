@@ -61,8 +61,70 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="lokasi">Usulan Lokasi Baru</label>
-                    <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Contoh: Taman Kota, Pasar Sentral, dll.">
+                    <label>Usulan Lokasi Baru</label>
+                    <div class="modal-trigger" id="modal-open-btn">
+                        <span id="selected-text">Pilih satu atau lebih lokasi</span>
+                        <i class="arrow-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Modal Selection -->
+                <div class="modal-overlay" id="modal-overlay">
+                    <div class="modal-card">
+                        <div class="modal-header">
+                            <h3>Pilih Lokasi</h3>
+                            <button type="button" class="btn-close" id="modal-close-x">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="select-all-wrapper">
+                                <label class="checkbox-item select-all">
+                                    <input type="checkbox" id="select-all">
+                                    <span>Pilih Semua</span>
+                                </label>
+                            </div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Halaman Kantor Walikota" class="loc-checkbox">
+                                    <span>Halaman Kantor Walikota</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="KotaMara" class="loc-checkbox">
+                                    <span>KotaMara</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Benteng Keraton" class="loc-checkbox">
+                                    <span>Benteng Keraton</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Stadion Lembah Hijau" class="loc-checkbox">
+                                    <span>Stadion Lembah Hijau</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Pantai Nirwana" class="loc-checkbox">
+                                    <span>Pantai Nirwana</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Batu Sori" class="loc-checkbox">
+                                    <span>Batu Sori</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Pantai Kamali" class="loc-checkbox">
+                                    <span>Pantai Kamali</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Bukit Wantiro" class="loc-checkbox">
+                                    <span>Bukit Wantiro</span>
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="lokasi[]" value="Terminal Warumusio" class="loc-checkbox">
+                                    <span>Terminal Warumusio</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-send" id="modal-close-btn" style="margin-top: 0; padding: 12px;">Selesai</button>
+                        </div>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn-send">Kirim Survey</button>
@@ -70,6 +132,7 @@
             
             <div class="back-link">
                 <p><a href="index.html">&larr; Kembali ke Pendaftaran</a></p>
+                <p><a href="terms.html">Syarat & Ketentuan</a> &bull; <a href="help.html">Pusat Bantuan</a></p>
                 <p style="font-size: 11px; margin-top: 15px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
             </div>
         </div>
@@ -88,6 +151,68 @@
             alert('Terima kasih atas partisipasi Anda dalam survey ini!');
             window.location.href = 'status.html';
         });
+
+        // Multi-select Modal Logic
+        const modalBtn = document.getElementById('modal-open-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalCloseX = document.getElementById('modal-close-x');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const selectAll = document.getElementById('select-all');
+        const checkboxes = document.querySelectorAll('.loc-checkbox');
+        const selectedText = document.getElementById('selected-text');
+
+        // Toggle modal
+        function openModal() {
+            modalOverlay.classList.add('active');
+            modalBtn.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent body scroll
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            modalBtn.classList.remove('open');
+            document.body.style.overflow = ''; // Restore body scroll
+        }
+
+        modalBtn.addEventListener('click', openModal);
+        modalCloseX.addEventListener('click', closeModal);
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking on overlay
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // Select All functionality
+        selectAll.addEventListener('change', function() {
+            checkboxes.forEach(cb => {
+                cb.checked = this.checked;
+            });
+            updateText();
+        });
+
+        // Update text on checkbox change
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                updateText();
+                // Update Select All state
+                const allChecked = Array.from(checkboxes).every(c => c.checked);
+                const someChecked = Array.from(checkboxes).some(c => c.checked);
+                selectAll.checked = allChecked;
+                selectAll.indeterminate = someChecked && !allChecked;
+            });
+        });
+
+        function updateText() {
+            const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+            if (checkedCount === 0) {
+                selectedText.innerText = "Pilih satu atau lebih lokasi";
+            } else if (checkedCount === checkboxes.length) {
+                selectedText.innerText = "Semua Lokasi Terpilih";
+            } else {
+                selectedText.innerText = `${checkedCount} Lokasi Terpilih`;
+            }
+        }
     </script>
 </body>
 </html>

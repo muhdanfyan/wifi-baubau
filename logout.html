@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="description" content="Logout Hotspot - Wifi Baubau">
+    <meta name="author" content="Kota Baubau">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Logout Berhasil - Wifi Baubau</title>
+</head>
+<body>
+
+    <div class="split-card">
+        <!-- Visual Section -->
+        <div class="visual-side">
+            <img src="assets/img/baubau40.png" alt="BAUBAU 4.0" class="hero-img">
+        </div>
+        
+        <!-- Status Summary Section -->
+        <div class="form-side" style="justify-content: center;">
+            <div class="branding">
+                <img src="assets/img/logo-baubau.png" alt="Logo Kota Baubau">
+                <span>Kota Baubau</span>
+            </div>
+            
+            <div class="status-indicator" style="background: #fff5f5; color: #e53e3e;">Sesi Berakhir</div>
+            
+            <h2>Koneksi Terputus</h2>
+            <p class="instruction">Terima kasih telah menggunakan layanan Wifi Baubau. Berikut ringkasan sesi Anda:</p>
+            
+            <div class="status-info">
+                <div class="status-item">
+                    <span class="status-label">Nama Pengguna</span>
+                    <span class="status-value">$(username)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Alamat IP / MAC</span>
+                    <span class="status-value">$(ip) / $(mac)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Total Durasi</span>
+                    <span class="status-value">$(uptime)</span>
+                </div>
+                $(if session-time-left)
+                <div class="status-item">
+                    <span class="status-label">Sisa Waktu</span>
+                    <span class="status-value">$(session-time-left)</span>
+                </div>
+                $(endif)
+                <div class="status-item">
+                    <span class="status-label">Data Terpakai</span>
+                    <span class="status-value">$(bytes-in-nice) / $(bytes-out-nice)</span>
+                </div>
+            </div>
+
+            <button type="button" class="btn-send" onclick="window.location.href='$(link-login)'">Login Kembali</button>
+            
+            <div class="back-link" style="margin-top: 40px; text-align: center;">
+                <p><a href="help.html" style="color: var(--text-muted); text-decoration: none; font-size: 13px;">Bantuan?</a></p>
+                <p style="font-size: 11px; margin-top: 15px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

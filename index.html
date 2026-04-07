@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hotspot Login Kota Baubau">
     <meta name="author" content="Kota Baubau">
-    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Hotspot Login - Kota Baubau</title>
 </head>
+
 <body>
 
     <div class="split-card">
@@ -17,44 +19,48 @@
         <div class="visual-side">
             <img src="assets/img/baubau40.png" alt="BAUBAU 4.0" class="hero-img">
         </div>
-        
+
         <!-- Registration Form Section -->
         <div class="form-side">
             <div class="branding">
                 <img src="assets/img/logo-baubau.png" alt="Logo Kota Baubau">
                 <span>Kota Baubau</span>
             </div>
-            
-            <h2>Pendaftaran Hotspot</h2>
+
+            <div class="header-group">
+                <h2>Login WiFi</h2>
+                <span class="badge-free">FREE WIFI</span>
+            </div>
             <p class="instruction">Silakan lengkapi data Anda untuk memulai akses internet gratis.</p>
-            
+
             <form action="#" method="POST" id="login-form">
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap"
+                        required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="wa">Nomor WhatsApp</label>
                     <input type="tel" id="wa" name="wa" class="form-control" placeholder="Contoh: 08123456789" required>
                 </div>
-                
+
                 <button type="submit" class="btn-send">Hubungkan & Kirim</button>
             </form>
-            
+
             <div class="survey-promo">
                 <p>Mau membantu? <a href="survey.html">Isi Survey Pelanggan &rarr;</a></p>
             </div>
 
             <div class="back-link">
-                <p><a href="#">Informasi Layanan</a> &bull; <a href="#">Pusat Bantuan</a></p>
+                <p><a href="terms.html">Syarat & Ketentuan</a> &bull; <a href="help.html">Pusat Bantuan</a></p>
                 <p style="font-size: 11px; margin-top: 15px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
+        document.getElementById('login-form').addEventListener('submit', function (e) {
             e.preventDefault();
             const nama = document.getElementById('nama').value;
             localStorage.setItem('wifi_user_name', nama);
@@ -62,7 +68,9 @@
         });
     </script>
 </body>
+
 </html>
 
 </body>
+
 </html>

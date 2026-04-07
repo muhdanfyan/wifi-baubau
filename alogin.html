@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="2; url=$(link-redirect)">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="description" content="Login Sukses - Wifi Baubau">
+    <meta name="author" content="Kota Baubau">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Login Berhasil - Wifi Baubau</title>
+    <script>
+        function startClock() {
+            $(if popup == 'true')
+            open('$(link-status)', 'hotspot_status', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=290,height=200');
+            $(endif)
+            setTimeout(function() {
+                location.href = unescape('$(link-redirect-esc)');
+            }, 2000);
+        }
+    </script> 
+</head>
+<body onLoad="startClock()">
+
+    <div class="split-card">
+        <!-- Visual Section -->
+        <div class="visual-side">
+            <img src="assets/img/baubau40.png" alt="BAUBAU 4.0" class="hero-img">
+        </div>
+        
+        <!-- Content Section -->
+        <div class="form-side" style="justify-content: center; text-align: center;">
+            <div class="branding" style="justify-content: center;">
+                <img src="assets/img/logo-baubau.png" alt="Logo Kota Baubau">
+                <span>Kota Baubau</span>
+            </div>
+            
+            <div class="status-indicator" style="background: #e6fffa; color: #38a169;">Koneksi Berhasil!</div>
+            
+            <h2>Selamat Menikmati</h2>
+            <p class="instruction">Anda telah terhubung. Sedang mengalihkan Anda ke tujuan...</p>
+            
+            <div class="loading-dots" style="margin: 20px 0;">
+                <span style="display: inline-block; width: 8px; height: 8px; background: var(--primary-purple); border-radius: 50%; margin: 0 4px; animation: dotPulse 1.5s infinite 0s;"></span>
+                <span style="display: inline-block; width: 8px; height: 8px; background: var(--primary-purple); border-radius: 50%; margin: 0 4px; animation: dotPulse 1.5s infinite 0.2s;"></span>
+                <span style="display: inline-block; width: 8px; height: 8px; background: var(--primary-purple); border-radius: 50%; margin: 0 4px; animation: dotPulse 1.5s infinite 0.4s;"></span>
+            </div>
+
+            <p style="font-size: 13px; color: var(--text-muted);">Jika tidak dialihkan otomatis, klik <a href="$(link-redirect)" style="color: var(--primary-purple); font-weight: 600; text-decoration: none;">di sini</a>.</p>
+            
+            <div class="back-link" style="margin-top: 40px;">
+                <p style="font-size: 11px; color: #aaa;">&copy; 2026 Pemerintah Kota Baubau</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+    </style>
+</body>
+</html>
